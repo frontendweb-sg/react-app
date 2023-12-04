@@ -29,7 +29,7 @@ const Login = () => {
           flexDirection: "column",
         }}
       >
-        <Typography variant="h1" mb={4}>
+        <Typography fontFamily="sans-serif" variant="h1" mb={4}>
           Welcome to React app
         </Typography>
         <Image
