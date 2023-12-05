@@ -1,9 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { styled } from "@mui/material/styles";
-
-const Wrapper = styled("div")(() => ({
-  minHeight: "100vh",
-}));
+import Cover from "@/components/common/Cover";
 
 /**
  * Auth page
@@ -11,9 +7,9 @@ const Wrapper = styled("div")(() => ({
  */
 const Auth = () => {
   return (
-    <Wrapper sx={{ display: "flex" }}>
+    <Cover sx={{ display: "flex" }}>
       <Outlet />
-    </Wrapper>
+    </Cover>
   );
 };
 

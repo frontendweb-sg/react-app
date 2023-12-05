@@ -7,6 +7,7 @@ import {
 } from "@mui/material/styles";
 import themeTypography from "./typography";
 import { colors } from "@mui/material";
+import componentsOverride from "./overrides";
 
 type ThemeProps = {
   theme: "light" | "dark";
@@ -37,6 +38,8 @@ const theme = (options: ThemeProps) => {
   };
 
   const themes = createTheme(themeOptions);
+  themes.components = componentsOverride(themes);
+
   return themes;
 };
 

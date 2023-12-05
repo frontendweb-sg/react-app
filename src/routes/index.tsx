@@ -9,6 +9,7 @@ import Register from "@/pages/auth/Register";
 import ForgotPassword from "@/pages/auth/ForgotPassword";
 import Admin from "@/pages/admin";
 import Dashboard from "@/pages/admin/dashboard";
+import CommingSoonPage from "@/pages/CommingSoon";
 
 const routes = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const routes = createBrowserRouter([
     element: <Admin />,
     errorElement: <NotFoundPage />,
     children: [{ index: true, element: <Dashboard /> }],
+  },
+  {
+    path: "/comming-soon",
+    element: <CommingSoonPage />,
   },
 ]);
 

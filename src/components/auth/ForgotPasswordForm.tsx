@@ -15,8 +15,9 @@ const ForgotPasssword = () => {
       initialValues: {
         email: "",
       },
-      onSubmit(values, formikHelpers) {
+      onSubmit(values, { setSubmitting }) {
         console.log("values", values);
+        setSubmitting(false);
       },
     });
   return (
@@ -25,6 +26,9 @@ const ForgotPasssword = () => {
         title={AppContent.forgotPassword}
         subtitle="Back to login?"
         linkLabel="Sign in"
+        linkProp={{
+          to: "/auth",
+        }}
       />
       <Input
         name="email"
