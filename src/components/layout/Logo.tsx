@@ -1,6 +1,8 @@
 import { AppContent } from "@/utils/contents";
 import { memo } from "react";
-import { Link, LinkProps } from "react-router-dom";
+import { Link as NavLink, LinkProps } from "react-router-dom";
+import Link from "@mui/material/Link";
+import { Typography } from "@mui/material";
 
 export type LogoProps = LinkProps &
   React.AnchorHTMLAttributes<HTMLLinkElement> & {
@@ -11,14 +13,19 @@ export type LogoProps = LinkProps &
 /**
  * Logo component
  */
-const Logo = memo(function Logo({
-  to,
-  label = AppContent.app,
-  size = 40,
-  ...rest
-}: LogoProps) {
+const Logo = memo(function Logo({ to, label, size = 40, ...rest }: LogoProps) {
   return (
-    <Link to={to} {...rest}>
+    <Link
+      sx={{
+        display: "flex",
+        mb: 3,
+        textDecoration: "none",
+        alignItems: "center",
+      }}
+      to={to}
+      {...rest}
+      component={NavLink}
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width={size}
@@ -53,8 +60,10 @@ const Logo = memo(function Logo({
             d="M450 384c26.509 0 48-21.491 48-48s-21.491-48-48-48-48 21.491-48 48 21.491 48 48 48"
           ></path>
         </g>
-      </svg>{" "}
-      {label}
+      </svg>
+      <Typography variant="subtitle1" ml={2}>
+        {label}
+      </Typography>
     </Link>
   );
 });

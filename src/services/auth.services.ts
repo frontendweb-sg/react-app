@@ -33,6 +33,7 @@ class AuthService {
       lastName: "",
       email: "",
       password: "",
+      confirmPassword: "",
       mobile: "",
     };
   }

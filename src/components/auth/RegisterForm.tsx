@@ -6,6 +6,7 @@ import { Box, Button, Grid, Typography } from "@mui/material";
 import { AppContent } from "@/utils/contents";
 import { Link } from "react-router-dom";
 import * as yup from "yup";
+import AuthTitle from "./AuthTitle";
 
 const validation = yup.object().shape({
   firstName: yup.string().required("First name is required"),
@@ -31,10 +32,12 @@ const RegisterForm = () => {
     });
   return (
     <Form onSubmit={handleSubmit}>
-      <Typography>Login</Typography>
-      <Typography>
-        If you have an account, please click on <Link to="..">login</Link>
-      </Typography>
+      <AuthTitle
+        linkLabel="Sign in"
+        linkProp={{ to: ".." }}
+        subtitle={AppContent.registerSubtitle}
+        title="Registration"
+      />
       <Grid container spacing={2}>
         <Grid item xs={6}>
           <Input
@@ -74,16 +77,34 @@ const RegisterForm = () => {
         sx={{ mb: 2 }}
         fullWidth
       />
-      <Input
-        name="password"
-        label="Password"
-        value={values.password}
-        onBlur={handleBlur}
-        onChange={handleChange}
-        errors={errors}
-        touched={touched}
-        fullWidth
-      />
+      <Grid container spacing={2}>
+        <Grid item xs={6}>
+          <Input
+            name="password"
+            label="Password"
+            value={values.password}
+            onBlur={handleBlur}
+            onChange={handleChange}
+            errors={errors}
+            touched={touched}
+            fullWidth
+            sx={{ mb: 2 }}
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <Input
+            name="confirmPassword"
+            label="Confirm password"
+            value={values.confirmPassword}
+            onBlur={handleBlur}
+            onChange={handleChange}
+            errors={errors}
+            touched={touched}
+            fullWidth
+            sx={{ mb: 2 }}
+          />
+        </Grid>
+      </Grid>
       <Input
         name="mobile"
         label="Mobile no"
@@ -94,14 +115,10 @@ const RegisterForm = () => {
         touched={touched}
         fullWidth
       />
-      <Box alignItems="center" justifyContent="flex-end" display="flex" mt={2}>
-        <Button type="button" variant="contained" sx={{ mr: 2 }}>
-          {AppContent.reset}
-        </Button>
-        <Button type="submit" variant="contained">
-          {AppContent.login}
-        </Button>
-      </Box>
+
+      <Button type="submit" variant="contained" sx={{ width: "100%", mt: 2 }}>
+        {AppContent.createAccount}
+      </Button>
     </Form>
   );
 };

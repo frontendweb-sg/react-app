@@ -56,7 +56,7 @@ const LoginForm = () => {
             to="forgot-password"
             style={{ color: "inherit", textDecoration: "none" }}
           >
-            Forgot password
+            {AppContent.forgotPassword}
           </Link>
         </Typography>
       </Box>

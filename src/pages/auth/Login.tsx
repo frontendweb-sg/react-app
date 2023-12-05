@@ -5,6 +5,7 @@ import { Grid, Typography } from "@mui/material";
 import Image from "@/components/common/Image";
 import ImageSrc from "@/assets/auth_dashboard.png";
 import AuthFooter from "@/components/auth/Footer";
+import { AppContent } from "@/utils/contents";
 
 /**
  * Login page
@@ -30,7 +31,7 @@ const Login = () => {
         }}
       >
         <Typography fontFamily="sans-serif" variant="h1" mb={4}>
-          Welcome to React app
+          {AppContent.welcomeText}
         </Typography>
         <Image
           src={ImageSrc}

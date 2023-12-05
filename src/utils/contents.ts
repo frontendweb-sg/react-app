@@ -8,4 +8,9 @@ export const AppContent = {
   update: "Update",
   login: "Login",
   reset: "Reset",
+  welcomeText: "Welcome to React app",
+  forgotPassword: "Forgot password",
+  loginSubtitle: "New user?",
+  registerSubtitle: "Already have an account?",
+  createAccount: "Create account",
 };
