@@ -4,9 +4,9 @@ import CssBaseline from "@mui/material/CssBaseline";
 // import store from "./store/index.ts";
 import App from "./App.tsx";
 // import { Provider } from "react-redux";
-import "./index.css";
 import { QueryClient, QueryClientProvider } from "react-query";
 import AppThemeProvider from "./components/context/theme.tsx";
+import "./index.scss";
 
 // client query instance
 const clientQuery = new QueryClient();

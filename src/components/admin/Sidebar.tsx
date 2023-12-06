@@ -1,14 +1,15 @@
 import Logo from "../layout/Logo";
-import CustomMenuList from "../common/MenuList";
 import { memo } from "react";
 import { AdminSidebarProps, Drawer } from "./style";
-import { Box, useMediaQuery } from "@mui/material";
+import { Switch, useMediaQuery } from "@mui/material";
 import { AdminMenu } from "@/utils/menus";
 import SimpleBar from "simplebar-react";
 import { useTheme } from "@/theme";
 import { BrowserView } from "react-device-detect";
 import "simplebar-react/dist/simplebar.min.css";
 import CustomMenu from "../common/CustomMenu";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import { useAppTheme } from "../context/theme";
 /**
  * Admin sidebar component
  */
@@ -19,9 +20,9 @@ const AdminSidebar = memo(function AdminSidebar({
   ...rest
 }: AdminSidebarProps) {
   const theme = useTheme();
-
   const matchUpMd = useMediaQuery(theme.breakpoints.up("md"));
 
+  const { changeTheme } = useAppTheme();
   return (
     <Drawer variant={variant} anchor="left" open={open} {...rest}>
       <Logo sx={{ display: "block", p: 2 }} to="/admin" />
@@ -35,6 +36,13 @@ const AdminSidebar = memo(function AdminSidebar({
         >
           {/* <CustomMenuList menus={AdminMenu} /> */}
           <CustomMenu menus={AdminMenu} />
+
+          <FormControlLabel
+            control={<Switch defaultChecked />}
+            label="Theme"
+            dir="rtl"
+            onClick={changeTheme}
+          />
         </SimpleBar>
       </BrowserView>
     </Drawer>

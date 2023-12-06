@@ -31,11 +31,15 @@ const closedMixin = (theme: Theme): CSSObject => ({
 export const Drawer = styled(MuiDrawer, {
   shouldForwardProp: (prop) => prop != "open",
 })(({ theme, open }) => ({
-  backgroundColor: "red",
   boxSizing: "border-box",
   width: config.drawerFullWidth,
   overflowY: "hidden",
-  borderRight: `1px dashed ${theme.palette.grey[200]}`,
+  backgroundColor: "orange",
+  borderRight: `1px dashed ${
+    theme.palette.mode === "dark"
+      ? theme.palette.grey[800]
+      : theme.palette.grey[200]
+  }`,
   ...(open && {
     ...openedMixin(theme),
     "& .MuiDrawer-paper": {
@@ -58,7 +62,10 @@ export const AppBar = styled(MuiAppBar, {
 })<AppBarProps>(({ theme, open }) => ({
   zIndex: theme.zIndex.drawer + 1,
 
-  backgroundColor: theme.palette.common.white,
+  backgroundColor:
+    theme.palette.mode === "dark"
+      ? theme.palette.background.default
+      : theme.palette.common.white,
   transition: theme.transitions.create(["width", "margin"], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,

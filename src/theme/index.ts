@@ -6,34 +6,35 @@ import {
   alpha,
 } from "@mui/material/styles";
 import themeTypography from "./typography";
-import { colors } from "@mui/material";
+import { Theme, colors } from "@mui/material";
 import componentsOverride from "./overrides";
+import themePallete from "./pallete";
+import scssColors from "@/theme/scss/_variables.module.scss";
 
-type ThemeProps = {
+export type ThemeProps = {
   theme: "light" | "dark";
+  dir?: "ltr" | "rtl";
 };
+
+export type ITheme = Theme & {
+  colors: typeof colors;
+  options: ThemeProps;
+  scssColors: typeof scssColors;
+};
+
 const theme = (options: ThemeProps) => {
-  const { theme } = options;
-  const color = colors;
-  const themeOption = {
-    colors: color,
-    // heading: color.grey,
-    // paper: color.paper,
-    // backgroundDefault: color.paper,
-    // background: color.primaryLight,
-    // darkTextPrimary: color.grey700,
-    // darkTextSecondary: color.grey500,
-    // textDark: color.grey900,
-    // menuSelected: color.secondaryDark,
-    // menuSelectedBack: color.secondaryLight,
-    // divider: color.grey200,
+  const muiTheme = useTheme();
+
+  const themeOption: ITheme = {
+    ...muiTheme,
+    direction: options.dir ?? "ltr",
+    colors,
     options,
+    scssColors,
   };
 
   const themeOptions: ThemeOptions = {
-    palette: {
-      mode: theme,
-    },
+    palette: themePallete(themeOption),
     typography: themeTypography(themeOption),
   };
 
