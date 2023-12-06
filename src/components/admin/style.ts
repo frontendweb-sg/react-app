@@ -2,13 +2,13 @@ import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 import MuiDrawer from "@mui/material/Drawer";
 import { styled, Theme, CSSObject } from "@mui/material/styles";
 import { DrawerProps } from "@mui/material/Drawer";
-import { config } from "@/config";
+import { config } from "@/theme/config";
 export type AdminSidebarProps = DrawerProps & {
   drawerWidth?: number;
 };
 
 const openedMixin = (theme: Theme): CSSObject => ({
-  width: config.drawerFullWidth,
+  width: config.drawerWidth.lg,
   overflowY: "hidden",
   transition: theme.transitions.create("width", {
     easing: theme.transitions.easing.sharp,
@@ -33,7 +33,7 @@ export const Drawer = styled(MuiDrawer, {
   shouldForwardProp: (prop) => prop != "open",
 })(({ theme, open }) => ({
   boxSizing: "border-box",
-  width: config.drawerFullWidth,
+  width: config.drawerWidth.lg,
   overflowY: "hidden",
   backgroundColor: "orange",
   borderRight: `1px dashed ${
@@ -77,8 +77,8 @@ export const AppBar = styled(MuiAppBar, {
     },
   }),
   ...(open && {
-    marginLeft: config.drawerFullWidth,
-    width: `calc(100% - ${config.drawerFullWidth}px)`,
+    marginLeft: config.drawerWidth.lg,
+    width: `calc(100% - ${config.drawerWidth.lg}px)`,
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
@@ -103,8 +103,8 @@ export const MainContainer = styled("main")<MainContainerProps>(
       },
     }),
     ...(open && {
-      marginLeft: config.drawerFullWidth,
-      width: `calc(100% - ${config.drawerFullWidth}px)`,
+      marginLeft: config.drawerWidth.lg,
+      width: `calc(100% - ${config.drawerWidth.lg}px)`,
       transition: theme.transitions.create(["width", "margin"], {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.enteringScreen,
