@@ -1,10 +1,10 @@
-import { AppContent } from "@/utils/contents";
 import { memo } from "react";
+import Link, { LinkProps as MuiLinkProps } from "@mui/material/Link";
 import { Link as NavLink, LinkProps } from "react-router-dom";
-import Link from "@mui/material/Link";
 import { Typography } from "@mui/material";
 
 export type LogoProps = LinkProps &
+  MuiLinkProps &
   React.AnchorHTMLAttributes<HTMLLinkElement> & {
     label?: string;
     size?: number;

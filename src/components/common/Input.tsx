@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { TextField } from "@mui/material";
-import { memo, forwardRef } from "react";
+import { memo, forwardRef, useRef, useImperativeHandle } from "react";
 import type { TextFieldProps } from "@mui/material";
 import type { FormikErrors, FormikTouched } from "formik";
 import { upperFirst } from "lodash";
@@ -11,7 +11,9 @@ export type InputProps = TextFieldProps & {
   errors?: FormikErrors<{ [field: string]: any }>;
   touched?: FormikTouched<{ [field: string]: any }>;
 };
-export type InputRef = HTMLInputElement;
+export type InputRef = {
+  current?: any;
+};
 
 const Input = memo(
   forwardRef<InputRef, InputProps>(function Input(
@@ -27,7 +29,7 @@ const Input = memo(
     ref
   ) {
     const classes = classNames();
-
+    const inpRef = useRef<HTMLInputElement>(null);
     const isError =
       errors?.[name as keyof typeof errors] &&
       touched?.[name as keyof typeof touched];
@@ -38,6 +40,10 @@ const Input = memo(
         ? errors?.[name as keyof typeof errors]
         : null;
 
+    useImperativeHandle(ref, () => ({
+      current: inpRef.current!,
+    }));
+
     return (
       <TextField
         name={name}
@@ -47,7 +53,7 @@ const Input = memo(
         error={!!isError}
         helperText={errorText as any}
         placeholder={placeholder || upperFirst(name)}
-        ref={ref}
+        ref={inpRef}
         {...rest}
       />
     );
