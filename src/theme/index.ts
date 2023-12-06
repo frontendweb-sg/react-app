@@ -42,7 +42,8 @@ const theme = (options: ThemeProps) => {
   };
 
   const themes = createTheme(themeOptions);
-  themes.components = componentsOverride(themes);
+
+  themes.components = componentsOverride(themeOption);
 
   return themes;
 };

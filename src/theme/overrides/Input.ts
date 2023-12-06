@@ -2,13 +2,15 @@ import { ITheme } from "..";
 
 export default function inputTheme(theme: ITheme) {
   const disabledStyle = {};
+  console.log(theme, "th");
   return {
+    MuiInput: {},
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
-          borderRadius: `${theme?.config?.borderRadius}px`,
+          borderRadius: theme.config.borderRadius.sm,
           "& .MuiOutlinedInput-notchedOutline": {
-            borderColor: theme.palette.grey[400],
+            borderColor: theme.palette.grey[300],
           },
           "&:hover $notchedOutline": {
             borderColor: theme.palette.grey[400],
@@ -20,7 +22,6 @@ export default function inputTheme(theme: ITheme) {
         input: {
           fontWeight: 500,
           padding: "15.5px 14px",
-          borderRadius: `${theme?.config?.borderRadius}px`,
           "&.MuiInputBase-inputSizeSmall": {
             padding: "10px 14px",
             "&.MuiInputBase-inputAdornedStart": {
@@ -31,16 +32,12 @@ export default function inputTheme(theme: ITheme) {
         inputAdornedStart: {
           paddingLeft: 4,
         },
-        notchedOutline: {
-          borderRadius: `${theme?.config?.borderRadius}px`,
-        },
+        notchedOutline: {},
       },
     },
     MuiInputBase: {
       styleOverrides: {
-        fieldset: {
-          borderColor: "red",
-        },
+        fieldset: {},
         input: {
           color: theme.palette.grey[900],
           "&::placeholder": {
