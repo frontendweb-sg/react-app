@@ -1,11 +1,11 @@
 import { useFormik } from "formik";
-import Form from "../common/Form";
+// import Form from "../common/Form";
 import Input from "../common/Input";
 import { authService } from "@/services/auth.services";
 import { Box, Button, Typography } from "@mui/material";
 import { AppContent } from "@/utils/contents";
 import * as yup from "yup";
-import { Link } from "react-router-dom";
+import { Form, Link, useActionData } from "react-router-dom";
 import AuthTitle from "./AuthTitle";
 
 const validation = yup.object().shape({
@@ -17,17 +17,19 @@ const validation = yup.object().shape({
  * @returns
  */
 const LoginForm = () => {
-  const { values, touched, errors, handleBlur, handleChange, handleSubmit } =
-    useFormik({
-      initialValues: authService.loginInitialValues(),
-      validationSchema: validation,
-      async onSubmit(values, { setSubmitting }) {
-        console.log("values", values);
-        setSubmitting(false);
-      },
-    });
+  const errorsData = useActionData();
+  const { values, touched, errors, handleBlur, handleChange } = useFormik({
+    initialValues: authService.loginInitialValues(),
+    validationSchema: validation,
+    async onSubmit(values, { setSubmitting }) {
+      console.log("values", values);
+      setSubmitting(false);
+    },
+  });
+
+  console.log("errorsData", errorsData);
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form method="post">
       <AuthTitle />
       <Input
         name="email"

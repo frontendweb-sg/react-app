@@ -1,8 +1,6 @@
 import { ITheme } from "..";
 
 export default function inputTheme(theme: ITheme) {
-  const disabledStyle = {};
-  console.log(theme, "th");
   return {
     MuiInput: {},
     MuiOutlinedInput: {

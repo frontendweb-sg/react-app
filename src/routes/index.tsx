@@ -11,6 +11,7 @@ import Admin from "@/pages/admin";
 import Dashboard from "@/pages/admin/dashboard";
 import CommingSoonPage from "@/pages/CommingSoon";
 import AdminCategory from "@/pages/admin/category";
+import { loginAction } from "@/components/auth/action";
 
 const routes = createBrowserRouter([
   {
@@ -31,7 +32,11 @@ const routes = createBrowserRouter([
     element: <Auth />,
     errorElement: <NotFoundPage />,
     children: [
-      { index: true, element: <Login /> },
+      {
+        index: true,
+        element: <Login />,
+        action: loginAction,
+      },
       { path: "register", element: <Register /> },
       { path: "forgot-password", element: <ForgotPassword /> },
     ],
