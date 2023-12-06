@@ -37,7 +37,7 @@ const NavItem = ({ menu }: NavItemProps) => {
       <ListItemButton sx={{ borderRadius: 2 }}>
         {menu?.icon && (
           <ListItemIcon sx={{ mr: 0, minWidth: 40 }}>
-            <Icon />
+            <Icon fontSize="small" />
           </ListItemIcon>
         )}
         <ListItemText>{menu.title}</ListItemText>

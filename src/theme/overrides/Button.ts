@@ -1,10 +1,9 @@
-export default function Button(theme: any) {
+export default function buttonTheme(theme: any) {
   const disabledStyle = {
     "&.Mui-disabled": {
       backgroundColor: theme.palette.grey[200],
     },
   };
-
   return {
     MuiButton: {
       defaultProps: {

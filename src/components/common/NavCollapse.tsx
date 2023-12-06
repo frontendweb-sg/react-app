@@ -56,7 +56,7 @@ const NavCollapse = memo(function NavCollapse({
       >
         {menu.icon && (
           <ListItemIcon sx={{ my: "auto", minWidth: 40 }}>
-            <Icon />
+            <Icon fontSize="small" />
           </ListItemIcon>
         )}
         <ListItemText>{menu.title}</ListItemText>

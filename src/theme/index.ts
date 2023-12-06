@@ -7,6 +7,7 @@ import {
 } from "@mui/material/styles";
 import themeTypography from "./typography";
 import { Theme, colors } from "@mui/material";
+import { config } from "./config";
 import componentsOverride from "./overrides";
 import themePallete from "./pallete";
 import scssColors from "@/theme/scss/_variables.module.scss";
@@ -20,6 +21,7 @@ export type ITheme = Theme & {
   colors: typeof colors;
   options: ThemeProps;
   scssColors: typeof scssColors;
+  config: typeof config;
 };
 
 const theme = (options: ThemeProps) => {
@@ -31,6 +33,7 @@ const theme = (options: ThemeProps) => {
     colors,
     options,
     scssColors,
+    config,
   };
 
   const themeOptions: ThemeOptions = {

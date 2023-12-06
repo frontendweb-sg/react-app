@@ -1,4 +1,9 @@
-import { Dashboard, Person, SvgIconComponent } from "@mui/icons-material";
+import {
+  Dashboard,
+  Person,
+  Settings,
+  SvgIconComponent,
+} from "@mui/icons-material";
 export interface IMenu {
   id: string | number;
   icon?: SvgIconComponent;
@@ -47,7 +52,7 @@ export const AdminMenu: IMenu[] = [
       {
         id: 2,
         title: "Profile",
-        icon: Dashboard,
+        icon: Settings,
         type: "collapse",
         children: [
           {
@@ -65,7 +70,7 @@ export const AdminMenu: IMenu[] = [
     id: 2,
     title: "Settings",
     subtitle: "User setting options",
-    icon: Person,
+    icon: Settings,
     type: "group",
     children: [
       {

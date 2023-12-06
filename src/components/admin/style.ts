@@ -9,6 +9,7 @@ export type AdminSidebarProps = DrawerProps & {
 
 const openedMixin = (theme: Theme): CSSObject => ({
   width: config.drawerFullWidth,
+  overflowY: "hidden",
   transition: theme.transitions.create("width", {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.enteringScreen,

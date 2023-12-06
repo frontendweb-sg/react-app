@@ -10,6 +10,8 @@ import "simplebar-react/dist/simplebar.min.css";
 import CustomMenu from "../common/CustomMenu";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { useAppTheme } from "../context/theme";
+import { upperFirst } from "lodash";
+import SidebarUser from "./SidebarUser";
 /**
  * Admin sidebar component
  */
@@ -26,6 +28,7 @@ const AdminSidebar = memo(function AdminSidebar({
   return (
     <Drawer variant={variant} anchor="left" open={open} {...rest}>
       <Logo sx={{ display: "block", p: 2 }} to="/admin" />
+
       <BrowserView>
         <SimpleBar
           style={{
@@ -34,14 +37,17 @@ const AdminSidebar = memo(function AdminSidebar({
             paddingRight: "16px",
           }}
         >
-          {/* <CustomMenuList menus={AdminMenu} /> */}
+          <SidebarUser />
           <CustomMenu menus={AdminMenu} />
-
           <FormControlLabel
-            control={<Switch defaultChecked />}
-            label="Theme"
-            dir="rtl"
-            onClick={changeTheme}
+            label={upperFirst(theme.palette.mode)}
+            control={
+              <Switch
+                checked={theme.palette.mode === "dark"}
+                onChange={changeTheme}
+                defaultChecked
+              />
+            }
           />
         </SimpleBar>
       </BrowserView>
