@@ -34,6 +34,7 @@ export const Drawer = styled(MuiDrawer, {
   backgroundColor: "red",
   boxSizing: "border-box",
   width: config.drawerFullWidth,
+  overflowY: "hidden",
   borderRight: `1px dashed ${theme.palette.grey[200]}`,
   ...(open && {
     ...openedMixin(theme),
@@ -76,3 +77,30 @@ export const AppBar = styled(MuiAppBar, {
     }),
   }),
 }));
+
+export type MainContainerProps = {
+  open?: boolean;
+};
+export const MainContainer = styled("main")<MainContainerProps>(
+  ({ theme, open }) => ({
+    marginTop: 64,
+    padding: 35,
+    transition: theme.transitions.create(["width", "margin"], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    ...(!open && {
+      [theme.breakpoints.up("sm")]: {
+        marginLeft: theme.spacing(8),
+      },
+    }),
+    ...(open && {
+      marginLeft: config.drawerFullWidth,
+      width: `calc(100% - ${config.drawerFullWidth}px)`,
+      transition: theme.transitions.create(["width", "margin"], {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.enteringScreen,
+      }),
+    }),
+  })
+);
