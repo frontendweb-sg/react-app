@@ -9,9 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import { memo } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import useToggle from "@/hooks/useToggle";
-import NavGroup from "./CustomMenu/NavGroup";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import NavItem from "./CustomMenu/NavItem";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
@@ -24,9 +22,8 @@ const NavCollapse = memo(function NavCollapse({
   level,
 }: NavCollapseProps) {
   const { open, handleToggle } = useToggle();
-  const [selected, setSelected] = useState(null);
+  const [selected] = useState(null);
 
-  const navigate = useNavigate();
   const Icon = menu?.icon!;
 
   const menus = menu.children?.map((item) => {
@@ -47,7 +44,7 @@ const NavCollapse = memo(function NavCollapse({
     <>
       <ListItemButton
         sx={{
-          mb: 0.5,
+          mb: 2,
           alignItems: "flex-start",
           backgroundColor: level! > 1 ? "transparent !important" : "inherit",
         }}

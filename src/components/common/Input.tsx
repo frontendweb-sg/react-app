@@ -46,6 +46,7 @@ const Input = memo(
 
     return (
       <TextField
+        fullWidth
         name={name}
         value={value}
         data-testid={dataTestId}

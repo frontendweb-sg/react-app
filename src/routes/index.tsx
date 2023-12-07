@@ -13,12 +13,14 @@ import CommingSoonPage from "@/pages/CommingSoon";
 import AdminCategory from "@/pages/admin/category";
 import {
   getToken,
+  getUser,
   loginAction,
   logoutAction,
   registerAction,
 } from "@/lib/auth";
 import User from "@/pages/user";
 import UserDashboard from "@/pages/user/dashboard";
+import UserProfile from "@/pages/user/profile";
 
 const routes = createBrowserRouter([
   {
@@ -59,10 +61,17 @@ const routes = createBrowserRouter([
     ],
   },
   {
-    path: "/user",
+    path: "/users",
     element: <User />,
     errorElement: <NotFoundPage />,
-    children: [{ index: true, element: <UserDashboard /> }],
+    children: [
+      { index: true, element: <UserDashboard /> },
+      {
+        path: "profile",
+        element: <UserProfile />,
+        loader: getUser,
+      },
+    ],
   },
   {
     path: "/comming-soon",

@@ -5,7 +5,7 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useTheme } from "@/theme";
 
 type NavItemProps = {
@@ -18,6 +18,7 @@ const NavItem = ({ menu }: NavItemProps) => {
   return (
     <Link
       component={NavLink}
+      mb={2}
       sx={{
         textDecoration: "none",
         overflow: "hidden",
