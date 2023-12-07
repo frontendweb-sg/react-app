@@ -11,7 +11,12 @@ import Admin from "@/pages/admin";
 import Dashboard from "@/pages/admin/dashboard";
 import CommingSoonPage from "@/pages/CommingSoon";
 import AdminCategory from "@/pages/admin/category";
-import { loginAction } from "@/components/auth/action";
+import {
+  getToken,
+  loginAction,
+  logoutAction,
+  registerAction,
+} from "@/lib/auth";
 
 const routes = createBrowserRouter([
   {
@@ -37,7 +42,7 @@ const routes = createBrowserRouter([
         element: <Login />,
         action: loginAction,
       },
-      { path: "register", element: <Register /> },
+      { path: "register", element: <Register />, action: registerAction },
       { path: "forgot-password", element: <ForgotPassword /> },
     ],
   },
@@ -45,6 +50,7 @@ const routes = createBrowserRouter([
     path: "/admin",
     element: <Admin />,
     errorElement: <NotFoundPage />,
+    loader: getToken,
     children: [
       { index: true, element: <Dashboard /> },
       { path: "category", element: <AdminCategory /> },
@@ -53,6 +59,10 @@ const routes = createBrowserRouter([
   {
     path: "/comming-soon",
     element: <CommingSoonPage />,
+  },
+  {
+    path: "/logout",
+    action: logoutAction,
   },
 ]);
 

@@ -1,12 +1,12 @@
-import Form from "../common/Form";
 import Input from "../common/Input";
 import { useFormik } from "formik";
 import { authService } from "@/services/auth.services";
-import { Box, Button, Grid, Typography } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import { AppContent } from "@/utils/contents";
-import { Link } from "react-router-dom";
+
 import * as yup from "yup";
 import AuthTitle from "./AuthTitle";
+import { Form, useActionData, useNavigation } from "react-router-dom";
 
 const validation = yup.object().shape({
   firstName: yup.string().required("First name is required"),
@@ -21,23 +21,29 @@ const validation = yup.object().shape({
  * @returns
  */
 const RegisterForm = () => {
-  const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
-    useFormik({
-      initialValues: authService.registerInitialValues(),
-      validationSchema: validation,
-      async onSubmit(values, { setSubmitting }) {
-        console.log("values", values);
-        setSubmitting(false);
-      },
-    });
+  const navigation = useNavigation();
+  const errorsData = useActionData();
+  const isSubmitting = navigation.state;
+
+  const { values, errors, touched, handleBlur, handleChange } = useFormik({
+    initialValues: authService.registerInitialValues(),
+    validationSchema: validation,
+    async onSubmit(values, { setSubmitting }) {
+      console.log("values", values);
+      setSubmitting(false);
+    },
+  });
+
+  console.log("navigation", navigation);
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form method="post">
       <AuthTitle
         linkLabel="Sign in"
         linkProp={{ to: ".." }}
         subtitle={AppContent.registerSubtitle}
         title="Registration"
       />
+      {JSON.stringify(errorsData)}
       <Grid container spacing={2}>
         <Grid item xs={6}>
           <Input
@@ -82,6 +88,7 @@ const RegisterForm = () => {
           <Input
             name="password"
             label="Password"
+            type="password"
             value={values.password}
             onBlur={handleBlur}
             onChange={handleChange}
@@ -95,6 +102,7 @@ const RegisterForm = () => {
           <Input
             name="confirmPassword"
             label="Confirm password"
+            type="password"
             value={values.confirmPassword}
             onBlur={handleBlur}
             onChange={handleChange}

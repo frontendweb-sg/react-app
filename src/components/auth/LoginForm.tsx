@@ -12,6 +12,7 @@ const validation = yup.object().shape({
   email: yup.string().email("Invalid email").required("Email is required"),
   password: yup.string().required(),
 });
+
 /**
  * Auth
  * @returns
@@ -43,6 +44,7 @@ const LoginForm = () => {
         fullWidth
       />
       <Input
+        type="password"
         name="password"
         label="Password"
         value={values.password}
