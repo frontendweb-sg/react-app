@@ -4,6 +4,7 @@ import { memo } from "react";
 /**
  * Auth footer
  */
+
 const AuthFooter = memo(function AuthFooter() {
   return (
     <AppBar

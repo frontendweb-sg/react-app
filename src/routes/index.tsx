@@ -17,6 +17,8 @@ import {
   logoutAction,
   registerAction,
 } from "@/lib/auth";
+import User from "@/pages/user";
+import UserDashboard from "@/pages/user/dashboard";
 
 const routes = createBrowserRouter([
   {
@@ -55,6 +57,12 @@ const routes = createBrowserRouter([
       { index: true, element: <Dashboard /> },
       { path: "category", element: <AdminCategory /> },
     ],
+  },
+  {
+    path: "/user",
+    element: <User />,
+    errorElement: <NotFoundPage />,
+    children: [{ index: true, element: <UserDashboard /> }],
   },
   {
     path: "/comming-soon",

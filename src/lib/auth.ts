@@ -4,6 +4,7 @@ import { json, redirect } from "react-router-dom";
 // get user details
 export const getUser = () => {
   const user = JSON.parse(localStorage.getItem("user") as string);
+  console.log("u", user);
   if (!user) return redirect("/auth");
   return user;
 };

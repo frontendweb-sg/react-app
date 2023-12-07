@@ -16,12 +16,7 @@ export type LogoProps = LinkProps &
 const Logo = memo(function Logo({ to, label, size = 40, ...rest }: LogoProps) {
   return (
     <Link
-      sx={{
-        display: "flex",
-        mb: 3,
-        textDecoration: "none",
-        alignItems: "center",
-      }}
+      sx={{ display: "flex", textDecoration: "none", alignItems: "center" }}
       to={to}
       {...rest}
       component={NavLink}

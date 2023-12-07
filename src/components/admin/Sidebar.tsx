@@ -11,7 +11,8 @@ import CustomMenu from "../common/CustomMenu";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { useAppTheme } from "../context/theme";
 import { upperFirst } from "lodash";
-import SidebarUser from "./SidebarUser";
+import SidebarUser from "../widgets/UserSidebar";
+
 /**
  * Admin sidebar component
  */

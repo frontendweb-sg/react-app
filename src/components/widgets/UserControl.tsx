@@ -1,5 +1,5 @@
 import Avatar from "@mui/material/Avatar";
-import Box from "@mui/material/Box";
+
 import { memo } from "react";
 import { Button, Typography } from "@mui/material";
 import { Form } from "react-router-dom";
@@ -10,15 +10,22 @@ import { IUser } from "@/services/auth.services";
  */
 const UserControl = memo(function UserControl() {
   const user = getUser() as IUser;
+  const fName = user?.firstName?.substring(0, 1);
+  const lName = user.lastName?.substring(0, 1);
   return (
-    <Box>
+    user && (
       <Form method="post" action="/logout">
         <Button type="submit">
           <Avatar />
-          <Typography>{user.email}</Typography>
+          {fName && lName && (
+            <Typography>
+              {fName}
+              {lName}
+            </Typography>
+          )}
         </Button>
       </Form>
-    </Box>
+    )
   );
 });
 
